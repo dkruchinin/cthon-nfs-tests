@@ -60,22 +60,18 @@ static void check_around ARGS_((int fd, offset64 where));
 #if !defined(_LFS64_LARGEFILE) && !defined(NATIVE64)
 
 int
-main(argc, argv)
-	int argc;
-	char **argv;
+main(int argc, char **argv)
 {
 	fprintf(stderr, "Skipping this test:\n");
 	fprintf(stderr,
 		"The platform doesn't appear to support 64-bit offsets.\n");
-	exit(0);
+	return (0);
 }
 
 #else /* 64-bit support */
 
 int
-main(argc, argv)
-	int argc;
-	char **argv;
+main(int argc, char **argv)
 {
 	int fd;
 	int oflags;
@@ -109,7 +105,7 @@ main(argc, argv)
 	check_around(fd, ((offset64)(0xffffffffU)) + 1);
 
 	unlink(filename);
-	exit(0);
+	return (0);
 }
 
 /*

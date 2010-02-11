@@ -53,9 +53,8 @@ static char TBAR[MAXPATHLEN];
 static char LBAR[MAXPATHLEN];
 static char str[STRCHARS];
 
-main(ac,av)
-	int ac;
-	char *av[];
+int
+main(int ac, char *av[])
 {
 	int count, fd, slen, lerr, slerr;
 	char *fn;
@@ -63,7 +62,7 @@ main(ac,av)
 
 #ifdef DOSorWIN32
 	fprintf(stderr, "This Test Not Executable on DOS or Windows\n");
-	exit(1);
+	return (1);
 #else
 	if (ac >= 2)
 		count = atoi(av[1]);
@@ -184,6 +183,6 @@ main(ac,av)
 		errno = 0;	/* clear error from last stat(2) */
 	}
 
-	exit(errno);
+	return (errno);
 #endif /* DOSorWIN32 */
 }

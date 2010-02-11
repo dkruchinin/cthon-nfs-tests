@@ -51,9 +51,7 @@ static void walk_dir ARGS_((DIR *));
 
 /*ARGSUSED*/
 int
-main(argc, argv)
-	int argc;
-	char **argv;
+main(int argc, char **argv)
 {
 	DIR *dp;
 	int c;
@@ -79,7 +77,7 @@ main(argc, argv)
 	check_file_info(dp);
 	cleanup();
 
-	exit(0);
+	return (0);
 }
 
 /*

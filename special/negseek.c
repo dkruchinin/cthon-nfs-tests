@@ -21,9 +21,8 @@
 #endif
 #endif /* DOSorWIN32 */
 
-main(argc, argv)
-	int argc;
-	char *argv[];
+int
+main(int argc, char *argv[])
 {
 	int fd;
 	long i;
@@ -64,5 +63,5 @@ main(argc, argv)
 	}
 	close(fd);
 	unlink(argv[1]);
-	exit(1);
+	return (1);
 }

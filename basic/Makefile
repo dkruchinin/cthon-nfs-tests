@@ -17,8 +17,12 @@ INCLUDES=../tests.h
 
 include ../tests.init
 
-all: origtests auxtests
-	if test ! -x runtests; then chmod a+x runtests; fi
+all: runtests origtests auxtests
+
+runtests: runtests.sh
+	$(RM) $@
+	cp runtests.sh $@
+	chmod a+x $@
 
 origtests: $(TESTS)
 auxtests: $(AUXTESTS)
@@ -84,7 +88,7 @@ lint:
 	lint $(CFLAGS) test9.c subr.c $(LIBS)
 
 clean:
-	rm -f *.o $(TESTS) $(AUXTESTS)
+	rm -f *.o runtests $(TESTS) $(AUXTESTS)
 
 copy: $(TESTS)
 	cp -f runtests runtests.mvs $(TESTS) $(AUXTESTS) $(DESTDIR)

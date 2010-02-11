@@ -18,14 +18,15 @@
 #include <unistd.h>
 #endif /* DOSorWIN32 */
 
-main()
+int
+main(int argc, char *argv[])
 {
 	int fd;
 	struct stat statb;
 
 #ifdef DOSorWIN32
 	fprintf(stderr, "This Test Not Executable on DOS or Windows\n");
-	exit(1);
+	return (1);
 #else
 	if ((fd = creat("testfile", 0644)) < 0) {
 		perror("creat");
@@ -65,6 +66,6 @@ main()
 
 	printf("truncate succeeded\n");
 
-	exit(0);
+	return (0);
 #endif /* DOSorWIN32 */
 }

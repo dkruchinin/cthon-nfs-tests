@@ -48,9 +48,8 @@ usage()
 	fprintf(stdout, "          n    Suppress test directory create operations\n");
 }
 
-main(argc, argv)
-	int argc;
-	char *argv[];
+int
+main(int argc, char *argv[])
 {
 	int count = 250;		/* times to do test */
 	int ct;
@@ -140,4 +139,5 @@ main(argc, argv)
 	}
 	fprintf(stdout, "\n");
 	complete();
+	return 0;
 }

@@ -24,9 +24,7 @@
 #endif /* DOSorWIN32 */
 
 int
-main(argc, argv)
-	int argc;
-	char *argv[];
+main(int argc, char *argv[])
 {
 	char *testfile = "exctest.file";
 	int count;
@@ -60,5 +58,5 @@ main(argc, argv)
 		}
 	}
 
-	exit(0);
+	return (0);
 }

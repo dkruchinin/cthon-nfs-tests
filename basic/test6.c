@@ -65,9 +65,8 @@ usage()
 	fprintf(stdout, "          i    Ignore non-test files dir entries\n");
 }
 
-main(argc, argv)
-	int argc;
-	char *argv[];
+int
+main(int argc, char *argv[])
 {
 #ifdef use_directs
 	struct direct *dp;
@@ -290,4 +289,5 @@ didn't read expected '%s' dir entry, pass %d", str, ct);
 	fprintf(stdout, "\n");
 	rmdirtree(1, files, 0, fname, DNAME, &totfiles, &totdirs, 1);
 	complete();
+	return 0;
 }

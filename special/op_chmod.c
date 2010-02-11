@@ -47,9 +47,7 @@ xxit(s)
 
 /*ARGSUSED*/
 int
-main(argc, argv)
-	int argc;
-	char *argv[];
+main(int argc, char *argv[])
 {
 	int fd, ret;
 	char *tname;
@@ -146,6 +144,6 @@ main(argc, argv)
 #endif /* DOSorWIN32 */
 
 	printf("test completed successfully.\n");
-	exit(0);
+	return (0);
 }
 

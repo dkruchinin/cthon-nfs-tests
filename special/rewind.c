@@ -14,7 +14,8 @@
 #include <unistd.h>
 #endif /* DOSorWIN32 */
 
-main()
+int
+main(int argc, char *argv[])
 {
 	char buffer[8192];
 	int size = 8192;
@@ -24,7 +25,7 @@ main()
 
 #ifdef DOSorWIN32
 	fprintf(stderr, "This Test Not Executable on DOS or Windows\n");
-	exit(1);
+	return (1);
 #else
 	if ((fd = open("test.file", O_RDWR | O_CREAT, 0666)) == -1) {
 		perror("open");
@@ -60,6 +61,6 @@ main()
 
 	close(fd);
 
-	exit(0);
+	return (0);
 #endif /* DOSorWIN32 */
 }

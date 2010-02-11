@@ -29,9 +29,7 @@
 static int stats = 0;
 
 int
-main(argc, argv)
-	int argc;
-	char *argv[];
+main(int argc, char *argv[])
 {
 	struct timeval etim;
 	float elapsed;
@@ -77,5 +75,5 @@ main(argc, argv)
 	elapsed = (float)etim.tv_sec + (float)etim.tv_usec / 1000000.0;
 	fprintf(stdout, "%d calls in %f seconds (%f calls/sec)\n",
 	    stats, elapsed, (float)stats / elapsed);
-	exit(0);
+	return (0);
 }

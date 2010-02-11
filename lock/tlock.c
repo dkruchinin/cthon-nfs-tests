@@ -1619,9 +1619,7 @@ runtests()
  * Main record locking test loop.
  */
 int
-main(argc, argv)
-	int argc;
-	char **argv;
+main(int argc, char **argv)
 {
 	int c;
 	extern int optind;
@@ -1696,5 +1694,5 @@ main(argc, argv)
 		childfree(0);
 	}
 	testexit(0);
-	/* NOTREACHED */
+	return 0;
 }

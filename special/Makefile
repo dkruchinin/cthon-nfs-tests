@@ -18,8 +18,12 @@ DEPS=$(INCLUDES) $(SUBRS)
 
 include ../tests.init
 
-all: $(TESTS)
-	if test ! -x runtests; then chmod a+x runtests; fi
+all: runtests $(TESTS)
+
+runtests: runtests.sh
+	$(RM) $@
+	cp runtests.sh $@
+	chmod a+x $@
 
 ../basic/subr.o:
 	cd ../basic; make subr.o
@@ -107,7 +111,7 @@ lint:
 	lint $(CFLAGS) freesp.c
 
 clean:
-	rm -f *.o $(TESTS) testfile exctest.file holeyfile
+	rm -f *.o runtests $(TESTS) testfile exctest.file holeyfile
 
 # "copy" can't depend on $(TESTS) because $(TESTS) depends on the
 # sources, and the sources might not be available (e.g., running the

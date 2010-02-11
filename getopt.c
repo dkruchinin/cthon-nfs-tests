@@ -93,9 +93,10 @@ char	**argv, *opts;
 }
 
 #include	<stdio.h>
+#include	<stdlib.h>
 
-main(ac, av)
-char	**av;
+int
+main(int ac, char **av)
 {
 	register int	i;
 	int	first = 1;
@@ -138,5 +139,5 @@ char	**av;
 		strcat(line, buf);
 	}
 	printf("%s\n", line);
-	exit(0);
+	return (0);
 }

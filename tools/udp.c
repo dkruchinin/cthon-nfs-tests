@@ -22,9 +22,7 @@ xxit(s)
 }
 
 int
-main(argc, argv)
-	int argc;
-	char **argv;
+main(int argc, char **argv)
 {
 	int s, len, ret;
         struct sockaddr_in addr;        /* socket address */
@@ -70,5 +68,6 @@ main(argc, argv)
 			msg, buf);
 	else
 		fprintf(stderr, "udp ping to %s ok\n", peer);
-}
 
+	return (0);
+}

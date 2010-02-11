@@ -18,8 +18,8 @@
 
 #include "../tests.h"
 
-main(argc,argv)
-char **argv;
+int
+main(int argc, char **argv)
 {
 	int n;
 	char buf[1024];
@@ -33,5 +33,5 @@ char **argv;
 		sprintf(buf, "name%d", n);
 		close(creat(buf, 0666));
 	}
-	exit(0);
+	return (0);
 }

@@ -51,9 +51,8 @@ usage()
 	fprintf(stdout, "          n    Suppress test directory create operations\n");
 }
 
-main(argc, argv)
-	int argc;
-	char *argv[];
+int
+main(int argc, char *argv[])
 {
 	int files = 10;		/* number of files in each dir */
 	int fi;
@@ -192,4 +191,5 @@ main(argc, argv)
 	rmdirtree(1, files, 0, fname, DNAME, &totfiles, &totdirs, 1);
 
 	complete();
+	return 0;
 }

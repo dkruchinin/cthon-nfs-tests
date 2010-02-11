@@ -24,9 +24,7 @@ xxit(s)
 
 /*ARGSUSED*/
 int
-main(argc, argv)
-	int argc;
-	char **argv;
+main(int argc, char **argv)
 {
 	int s, ns;			/* sockets */
 	struct sockaddr_in addr;	/* socket address */
@@ -55,8 +53,11 @@ main(argc, argv)
 	while(1) {
 		fprintf(stderr, "%s awaiting accept\n", argv[0]);
 		addrlen = sizeof(struct sockaddr_in);
-		if ((ns = accept(s, (struct sockaddr *)&addr, &addrlen)) < 0)
+		ns = accept(s, (struct sockaddr *)&addr, &addrlen);
+		if (ns < 0) {
 			xxit("accept");
+			break;
+		}
 #ifdef __STDC__
 		if (hp = gethostbyaddr((const char *)&addr.sin_addr,
 					sizeof(addr.sin_addr), AF_INET))
@@ -80,5 +81,5 @@ main(argc, argv)
 		sleep(5);
 		close(ns);
 	}
+	return (0);
 }
-

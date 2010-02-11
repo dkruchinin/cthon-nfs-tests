@@ -21,9 +21,8 @@
 #endif
 #endif /* DOSorWIN32 */
 
-main(argc, argv)
-	int argc;
-	char *argv[];
+int
+main(int argc, char *argv[])
 {
 	int count;
 	int i;
@@ -55,5 +54,5 @@ main(argc, argv)
 cleanup:
 	unlink("rename1");
 	unlink("rename2");
-	exit(0);
+	return (0);
 }

@@ -80,9 +80,8 @@ usage()
 #endif
 }
 
-main(argc, argv)
-	int argc;
-	char *argv[];
+int
+main(int argc, char *argv[])
 {
 	int count = DCOUNT;	/* times to do each file */
 	int ct;
@@ -205,10 +204,11 @@ main(argc, argv)
 
 	for (ct = 0; ct < count; ct++) {
 #ifdef USE_OPEN
-		if ((fd = open(bigfile, woflags, CHMOD_RW)) < 0) {
+		fd = open(bigfile, woflags, CHMOD_RW);
 #else
-		if ((fd = creat(bigfile, CHMOD_RW)) < 0) {
+		fd = creat(bigfile, CHMOD_RW);
 #endif
+		if (fd < 0) {
 			error("can't create '%s'", bigfile);
 			exit(1);
 		}
@@ -355,4 +355,5 @@ main(argc, argv)
 		exit(1);
 	}
 	complete();
+	return 0;
 }

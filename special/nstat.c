@@ -26,9 +26,8 @@
 
 static int stats = 0;
 
-main(argc, argv)
-	int argc;
-	char *argv[];
+int
+main(int argc, char *argv[])
 {
 	struct timeval etim;
 	float elapsed;
@@ -61,5 +60,5 @@ main(argc, argv)
 		    count, elapsed, (float)count / elapsed,
 		    1000.0 * elapsed / (float)count);
 	}
-	exit(0);
+	return (0);
 }

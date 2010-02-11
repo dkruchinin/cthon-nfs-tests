@@ -27,6 +27,7 @@
 #include <sys/time.h>
 #endif
 #include <sys/stat.h>
+#include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -40,6 +41,9 @@ char *Myname;
 int Dflag = 0;
 
 static void chdrive ARGS_((char *path));
+int unix_mkdir ARGS_((char *path, int mode));
+int unix_chdir ARGS_((char *path));
+
 
 /*
  * Build a directory tree "lev" levels deep
@@ -378,9 +382,7 @@ chdrive(path)
 }
 
 int
-unix_mkdir(path, mode)
-	char *path;
-	mode_t mode;
+unix_mkdir(char *path, int mode)
 {
 	return mkdir(path, mode);
 }

@@ -49,9 +49,7 @@ static int Debug = 0;
 static char *Prog;
 
 int
-main(argc, argv)
-int argc;
-char *argv[];
+main(int argc, char *argv[])
 {
 	int fd, i, tot, ct, sz, bytes, ret;
 	char *filenm = FILENM;
@@ -239,5 +237,5 @@ char *argv[];
 	}
 
 	printf("Holey file test ok\n");
-	exit(0);
+	return (0);
 }

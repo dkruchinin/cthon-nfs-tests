@@ -65,16 +65,15 @@ usage()
 	fprintf(stdout, "          n    Suppress test directory create operations\n");
 }
 
-main(argc, argv)
-	int argc;
-	char *argv[];
+int
+main(int argc, char *argv[])
 {
 #ifdef SVR4
 	int count = 1500;	/* times to do statvfs call */
 #else
 	int count = 1500;	/* times to do statfs call */
 #endif
-	int ct;
+	int ct, rv;
 	struct timeval time;
 #ifdef SVR4
 	struct statvfs sfsb;
@@ -155,10 +154,11 @@ main(argc, argv)
 		}
 #else
 #ifdef SVR3
-		if (statfs(".", &sfsb, sizeof(sfsb), 0) < 0) {
+		rv = statfs(".", &sfsb, sizeof(sfsb), 0);
 #else
-		if (statfs(".", &sfsb) < 0) {
+		rv = statfs(".", &sfsb);
 #endif
+		if (rv < 0) {
 			error("can't do statfs on \".\"");
 			exit(1);
 		}
@@ -179,4 +179,5 @@ main(argc, argv)
 	}
 	fprintf(stdout, "\n");
 	complete();
+	return 0;
 }

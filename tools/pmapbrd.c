@@ -106,9 +106,7 @@ static int getbroadcastnets ARGS_((int, char *));
 static bool_t eachresult();
 
 int
-main(argc, argv)
-	int argc;
-	char **argv;
+main(int argc, char **argv)
 {
 	struct sockaddr_in sin;
 	int pktspersec, count;
@@ -116,7 +114,7 @@ main(argc, argv)
 	enum clnt_stat clnt_stat;
 	struct timeval t;
 	int a, b;
-	int i;
+	int i, rv;
 
 	if (argc != 3) {
 		fprintf(stderr, "usage: %s pktspersec count\n", argv[0]);
@@ -144,11 +142,12 @@ main(argc, argv)
 #ifdef SO_BROADCAST
 	i = 1;
 #ifdef __STDC__
-	if (setsockopt(sock, SOL_SOCKET, SO_BROADCAST, (const char *)&i,
-		       sizeof(i)) == -1) {
+	rv = setsockopt(sock, SOL_SOCKET, SO_BROADCAST, (const char *)&i,
+			sizeof(i));
 #else
-	if (setsockopt(sock, SOL_SOCKET, SO_BROADCAST, &i, sizeof(i)) == -1) {
+	rv = setsockopt(sock, SOL_SOCKET, SO_BROADCAST, &i, sizeof(i));
 #endif
+	if (rv == -1) {
 		perror("brd: setsockopt");
 		exit(1);
 	}
@@ -182,6 +181,7 @@ main(argc, argv)
 			exit(-1);
 		}
 	}
+	return 0;
 }
 
 /*ARGSUSED*/

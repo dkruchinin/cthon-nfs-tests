@@ -12,13 +12,17 @@ COPYFILES=runtests tests.init server domount.c README READWIN.txt Testitems \
 
 include tests.init
 
-all: domount getopt
+all: runtests domount getopt
 	cd basic; $(MAKE)
 	cd general; $(MAKE)
 	cd special; $(MAKE)
 	cd tools; $(MAKE)
 	cd lock; $(MAKE)
-	if test ! -x runtests; then chmod a+x runtests; fi
+
+runtests: runtests.sh
+	$(RM) $@
+	cp runtests.sh $@
+	chmod a+x $@
 
 lint:
 	cd basic; $(MAKE) lint
@@ -34,7 +38,7 @@ getopt: getopt.c
 	$(CC) $(CFLAGS) -o $@ $@.c
 
 clean:
-	rm -f domount getopt
+	rm -f domount getopt runtests
 	cd basic; $(MAKE) clean
 	cd general; $(MAKE) clean
 	cd special; $(MAKE) clean

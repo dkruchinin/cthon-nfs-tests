@@ -42,20 +42,16 @@ static void verify_size ARGS_((int, off_t));
 
 /*ARGUSED*/
 int
-main(argc, argv)
-	int argc;
-	char **argv;
+main(int argc, char **argv)
 {
 	printf("fcntl(...F_FREESP...) not available on this platform.\n");
-	exit(0);
+	return (0);
 }
 
 #else /* F_FREESP */
 
 int
-main(argc, argv)
-	int argc;
-	char **argv;
+main(int argc, char **argv)
 {
 	int fd;
 	int i;
@@ -118,7 +114,7 @@ main(argc, argv)
 	
 	close(fd);
 	unlink(filename);
-	exit(0);
+	return (0);
 }
 
 /*

@@ -31,19 +31,19 @@ static DIR * my_opendir ARGS_((char *name));
 static void print ARGS_((char *));
 static struct dirent *my_readdir ARGS_((DIR *dirp));
 
-main(argc, argv)
-	int argc;
-	char *argv[];
+int
+main(int argc, char *argv[])
 {
 #if defined(LINUX) || defined (AIX)
 	fprintf(stderr, "dirdmp is not supported on this platform.\n");
-	exit(1);
+	return 1;
 #else
 	argv++;
 	argc--;
 	while (argc--) {
 		print(*argv++);
 	}
+	return 0;
 #endif /* LINUX || AIX */
 }
 

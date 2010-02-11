@@ -23,9 +23,7 @@ xxit(s)
 
 /*ARGSUSED*/
 int
-main(argc, argv)
-	int argc;
-	char **argv;
+main(int argc, char **argv)
 {
 	int s;				/* socket */
 	struct sockaddr_in addr;	/* socket address */
@@ -53,8 +51,10 @@ main(argc, argv)
 		addrlen = sizeof(struct sockaddr_in);
 		ret = recvfrom(s, buf, BUFSIZ, 0, (struct sockaddr *)&addr,
 			       &addrlen);
-		if (ret < 0)
+		if (ret < 0) {
 			xxit("recvfrom");
+			break;
+		}
 #ifdef __STDC__
 		if (hp = gethostbyaddr((const char *)&addr.sin_addr,
 					sizeof(addr.sin_addr), AF_INET))
@@ -76,5 +76,5 @@ main(argc, argv)
 			fprintf(stderr, " sendto ret %d\n", ret);
 		}
 	}
+	return 0;
 }
-

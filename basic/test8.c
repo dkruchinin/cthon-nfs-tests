@@ -55,9 +55,8 @@ usage()
 	fprintf(stdout, "          n    Suppress test directory create operations\n");
 }
 
-main(argc, argv)
-	int argc;
-	char *argv[];
+int
+main(int argc, char *argv[])
 {
 	int files = 10;		/* number of files in each dir */
 	int fi;
@@ -204,4 +203,5 @@ main(argc, argv)
 	fprintf(stdout, "\n");
 #endif /* S_IFLNK */
 	complete();
+	return 0;
 }

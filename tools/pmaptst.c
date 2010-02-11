@@ -33,9 +33,7 @@ extern int pmap_unset ARGS_((u_int prog, u_int vers));
 
 /*ARGSUSED*/
 int
-main(argc, argv)
-	int argc;
-	char **argv;
+main(int argc, char **argv)
 {
 	int errs = 0;
 
@@ -77,5 +75,5 @@ main(argc, argv)
 	system(RPCINFO);
 	if (!errs)
 		printf("Test complete ok\n");
-	exit(errs);
+	return (errs);
 }

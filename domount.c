@@ -8,10 +8,12 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 
-main(argc, argv)
-	int argc;
-	char **argv;
+int
+main(int argc, char **argv)
 {
 	char *comm;
 	extern char *getenv();
@@ -32,6 +34,5 @@ main(argc, argv)
 
 	(void)execv(*argv, argv);
 
-	exit(1);
-	/* NOTREACHED */
+	return (1);
 }

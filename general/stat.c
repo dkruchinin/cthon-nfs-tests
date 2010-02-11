@@ -2,6 +2,7 @@
 /*	1.3 Lachman ONC Test Suite source	*/
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 
 /*
@@ -24,9 +25,8 @@ char	*Prog, *File;
 int	getattfmt();
 void	prtstat();
 
-main(argc, argv)
-	int	argc;
-	char	*argv[];
+int
+main(int argc, char *argv[])
 {
 	FILE	*fp;
 	int	i, n;
@@ -87,7 +87,7 @@ main(argc, argv)
 	prtstat(sys, n);
 	printf(" sys\n");
 
-	exit(0);
+	return (0);
 }
 
 /*

@@ -44,9 +44,7 @@ xxit(s)
 
 /*ARGSUSED*/
 int
-main(argc, argv)
-	int argc;
-	char *argv[];
+main(int argc, char *argv[])
 {
 	int fd, ret;
 	char *taname;
@@ -174,6 +172,6 @@ main(argc, argv)
 
 	if (errcount == 0)
 		printf("test completed successfully.\n");
-	exit(errcount);
+	return (errcount);
 }
 

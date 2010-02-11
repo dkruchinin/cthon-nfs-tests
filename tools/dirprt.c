@@ -34,19 +34,19 @@
 static DIR *my_opendir ARGS_((char *));
 static void print ARGS_((char *));
 
-main(argc, argv)
-	int argc;
-	char *argv[];
+int
+main(int argc, char *argv[])
 {
 #if defined (AIX)
 	fprintf(stderr, "dirprt is not supported on this platform.\n");
-	exit(1);
+	return 1;
 #else
 	argv++;
 	argc--;
 	while (argc--) {
 		print(*argv++);
 	}
+	return 0;
 #endif /* AIX */
 }
 

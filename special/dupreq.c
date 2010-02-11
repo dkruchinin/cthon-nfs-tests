@@ -17,9 +17,8 @@
 #include <fcntl.h>
 #endif
 
-main(argc, argv)
-	int argc;
-	char *argv[];
+int
+main(int argc, char *argv[])
 {
 	int count, i;
 	int fd;
@@ -33,7 +32,7 @@ main(argc, argv)
  * or Windows platform, so this test will not work.
  */
 	fprintf(stderr, "This Test Not Executable on DOS or Windows\n");
-	exit(1);
+	return (1);
 #else
 	if (argc != 3) {
 		fprintf(stderr, "usage: %s count name\n", argv[0]);
@@ -81,6 +80,6 @@ main(argc, argv)
 	if (u2fail) {
 		fprintf(stdout, "%d bad unlink 2\n", u2fail);
 	}
-	exit(0);
+	return (0);
 #endif /* DOSorWIN32 */
 }

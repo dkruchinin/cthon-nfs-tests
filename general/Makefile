@@ -9,8 +9,15 @@ FILES=Makefile runtests runtests.wrk *.sh *.c mkdummy rmdummy \
 
 LARGE_SRC=large1.c large2.c large3.c
 
-all: $(LARGE_SRC)
-	if test ! -x runtests; then chmod a+x runtests; fi
+all: runtests stat $(LARGE_SRC)
+
+runtests: runtests.sh
+	$(RM) $@
+	cp runtests.sh $@
+	chmod a+x $@
+
+stat: stat.c
+	${CC} ${CFLAGS} -o stat stat.c -lm
 
 large1.c: large.c
 	rm -f large1.c
@@ -25,7 +32,7 @@ large3.c: large.c
 	cp large.c large3.c
 
 clean:
-	rm -f *.time *.o stat $(LARGE_SRC)
+	rm -f runtests *.time *.o stat $(LARGE_SRC)
 
 copy dist: all
 	cd $(DESTDIR); rm -f $(FILES)

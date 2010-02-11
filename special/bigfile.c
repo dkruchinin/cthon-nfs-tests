@@ -46,9 +46,7 @@ static void write_read_mmap ARGS_((int));
 #endif
 
 int
-main(argc, argv)
-	int argc;
-	char **argv;
+main(int argc, char **argv)
 {
 	int c;
 	off_t size;
@@ -98,7 +96,7 @@ main(argc, argv)
 			filename, strerror(errno));
 		exit(1);
 	}
-	exit(0);
+	return (0);
 }
 
 /*

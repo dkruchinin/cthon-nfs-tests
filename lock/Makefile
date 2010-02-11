@@ -11,9 +11,15 @@ include ../tests.init
 
 LIBS = -lm
 
-all:
+all: runtests tlock_all
+
+runtests: runtests.sh
+	$(RM) $@
+	cp runtests.sh $@
+	chmod a+x $@
+
+tlock_all:
 	@make $(LOCKTESTS)
-	if test ! -x runtests; then chmod a+x runtests; fi
 
 # Native file offsets (32- or 64-bit), pre-Large File Summit semantics.
 tlock:	tlock.c
@@ -29,7 +35,7 @@ tlock64:	tlock.c
 	$(CC) $(CFLAGS) -DLF_SUMMIT -DLARGE_LOCKS -o tlock64 tlock.c $(LIBS)
 
 clean:
-	rm -f *.o tlock tlocklfs tlock64
+	rm -f *.o runtests tlock tlocklfs tlock64
 
 copy:	all
 	cp -f runtests $(LOCKTESTS) $(DESTDIR)

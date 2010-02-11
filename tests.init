@@ -54,7 +54,7 @@ BLC=\\c
 
 # Use this path for:
 #	Solaris 2.x
-PATH=/opt/SUNWspro/bin:/usr/ccs/bin:/sbin:/bin:/usr/bin:/usr/ucb:/etc:.
+PATH=/opt/SUNWspro/bin:/usr/ccs/bin:/sbin:/bin:/usr/bin:/etc:.
 
 # Use this path for:
 #	Solaris 2.x with GCC
@@ -135,7 +135,7 @@ CC=/opt/SUNWspro/bin/cc
 #CC=/opt/gnu/bin/gcc
 # Use this through Solaris 2.6.  For Solaris 2.7 and later, use
 # this for 32-bit mode applications.
-CFLAGS=`echo -DSVR4 -DMMAP -DSOLARIS2X -DSTDARG`
+CFLAGS=`echo -errwarn -DSVR4 -DMMAP -DSOLARIS2X -DSTDARG`
 # Use this with gcc (32-bit binaries):
 #CFLAGS=`echo -DSVR4 -DMMAP -DSOLARIS2X -DSTDARG -mcpu=ultrasparc`
 # For Solaris 2.7 and later, use this for 64-bit mode applications

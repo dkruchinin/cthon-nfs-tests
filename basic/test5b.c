@@ -60,9 +60,8 @@ usage()
 	fprintf(stdout, "          n    Suppress test directory create operations\n");
 }
 
-main(argc, argv)
-	int argc;
-	char *argv[];
+int
+main(int argc, char *argv[])
 {
 	int count = DCOUNT;	/* times to do each file */
 	int ct;
@@ -216,4 +215,5 @@ main(argc, argv)
 		exit(1);
 	}
 	complete();
+	return 0;
 }

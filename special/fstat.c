@@ -26,9 +26,7 @@
 #endif /* DOSorWIN32 */
 
 int
-main(argc, argv)
-	int argc;
-	char *argv[];
+main(int argc, char *argv[])
 {
 #ifdef SVR4
 	struct statvfs fs;
@@ -37,9 +35,10 @@ main(argc, argv)
 #endif
 #ifdef DOSorWIN32
 	fprintf(stderr, "This Test Not Executable on DOS or Windows\n");
-	exit(1);
+	return (1);
 #else
 	char *name = ".";
+	int rv;
 
 	if (argc > 2) {
 		fprintf(stderr, "usage: %s [path]\n", argv[0]);
@@ -51,17 +50,18 @@ main(argc, argv)
 	fs.f_files = 0;
 	fs.f_ffree = 0;
 #ifdef SVR3
-	if (statfs(name, &fs, sizeof(fs), 0) < 0) {
+	rv = statfs(name, &fs, sizeof(fs), 0);
 #elif defined(SVR4)
-	if (statvfs(name, &fs) < 0) {
+	rv = statvfs(name, &fs);
 #else
-	if (statfs(name, &fs) < 0) {
+	rv = statfs(name, &fs);
 #endif
+	if (rv < 0) {
 		perror(argv[1]);
 		exit(1);
 	}
 	printf("total %lu free %lu\n", (u_long)fs.f_files,
 	       (u_long)fs.f_ffree);
-	exit(0);
+	return (0);
 #endif /* DOSorWIN32 */
 }
