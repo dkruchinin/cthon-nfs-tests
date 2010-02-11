@@ -1503,6 +1503,7 @@ test13()
 			FATAL);
 		test(13, 4, F_TLOCK, (off_t)mappedlen - 2, (off_t)END,
 			lock1err, WARN);
+		testmunmap();
 		close_testfile(DO_UNLINK);
 
 		childfree(0);
