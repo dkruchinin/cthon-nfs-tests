@@ -105,6 +105,8 @@ static off_t maxeof;
 #define	DO_TEST(n)	((testnum == 0) || (testnum == (n)))
 #define	DO_RATE(n)	((ratetest > 0) || (testnum == (n)))
 #define	DO_MAND(n)	((mandtest > 0) || (testnum == (n)))
+/* exclude stuff known to fail on CIFS w/o unix extensions */
+#define DO_CIFS		(!cifstest)
 
 #define	DO_UNLINK	1
 #define	JUST_CLOSE	0
@@ -119,6 +121,7 @@ static off_t maxeof;
 static int ratetest = 0;
 static int ratecount = 1000;		/* test 8 */
 static int mandtest = 0;
+static int cifstest = 0;
 
 static int iorate_kb = 256;		/* test 14 */
 static int iorate_count = 10;		/* test 14 */
@@ -1594,7 +1597,7 @@ runtests()
 	if (DO_MAND(9)) {
 		test9();
 	}
-	if (DO_TEST(10)) {
+	if (DO_TEST(10) && DO_CIFS) {
 		test10();
 	}
 	if (DO_TEST(11)) {
@@ -1629,8 +1632,11 @@ main(int argc, char **argv)
 
 	passcnt = 1;	/* default, test for 1 pass */
 
-	while ((c = getopt(argc, argv, "p:t:rmv:w:")) != -1) {
+	while ((c = getopt(argc, argv, "cp:t:rmv:w:")) != -1) {
 		switch (c) {
+		case 'c':
+			cifstest++;
+			break;
 		case 'p':
 			sscanf(optarg, "%d", &passcnt);
 			break;

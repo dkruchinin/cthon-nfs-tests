@@ -37,10 +37,12 @@ echo ""
 
 # Setattr, getattr and lookup tests
 echo ""
-./test4 $TESTARG
+if [ "$CIFS" != "yes" ]; then
+	./test4 $TESTARG
 # Getattr and lookup tests
-# echo ""
-# ./test4a $TESTARG
+else
+	./test4a $TESTARG
+fi
 
 # Write and read tests
 echo ""

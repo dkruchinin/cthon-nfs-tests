@@ -41,6 +41,10 @@ then
 	TESTARGS="-v 2 $TESTARGS"
 fi
 
+if [ "$CIFS" == "yes" ]; then
+	TESTARGS="-c $TESTARGS"
+fi
+
 for i in $LOCKTESTS
 do
 	echo ""

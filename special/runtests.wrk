@@ -64,7 +64,7 @@ echo ""
 echo "test holey file support"
 ./holey
 
-if [ "$HARDLINKS"o != no ]
+if [ "$HARDLINKS"o != no -a "$CIFS" != "yes" ]
 then
 	echo ""
 	echo "second check for lost reply on non-idempotent requests"

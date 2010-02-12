@@ -19,7 +19,7 @@
 Program=`basename $0`
 
 InitFile="./tests.init"
-USAGE="usage:  $Program [-a|-b|-g|-s|-l|-c] [-f|-t|-n|-h] [-o mnt_options] [-p server_path] [-m mntpoint] [-N passes] server_name"
+USAGE="usage:  $Program [-a|-b|-g|-s|-l|-c] [-f|-t|-n|-h|-C] [-o mnt_options] [-p server_path] [-m mntpoint] [-N passes] server_name"
 
 # defaults
 . $InitFile
@@ -27,7 +27,7 @@ export PATH CFLAGS LIBS MOUNT UMOUNT MNTOPTIONS
 
 passes="1"
 
-set - `getopt abcfglhm:N:no:p:st $*`
+set - `getopt abcCfglhm:N:no:p:st $*`
 
 if [ $? != 0 ]
 then
@@ -40,6 +40,7 @@ do
 		-a|-b|-g|-s|-l)	TEST=$c; shift	;;
 		-f|-n|-t)	TESTARG=$c; shift	;;
 		-c)		cachefs="yes"; shift	;;
+		-C)		CIFS="yes"; export CIFS; shift ;;
 		-h)		HARDLINKS=n; export HARDLINKS; shift	;;
 		-m)		USRMNTPOINT=$2; shift; shift	;;
 		-o)		MNTOPTIONS=$2; export MNTOPTIONS;
