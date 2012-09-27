@@ -8,7 +8,7 @@
 # 'make copy DESTDIR=path'      copies test programs to path
 # 'make dist DESTDIR=path'      copies sources to path
 
-TESTS = tcp tcpd udp udpd dirdmp dirprt pmaptst pmapbrd
+TESTS = tcp tcpd udp udpd dirprt pmaptst pmapbrd
 
 # dirdmp apparently doesn't work with Linux 2.2.  So for Linux systems,
 # comment out the above definition and use this one.

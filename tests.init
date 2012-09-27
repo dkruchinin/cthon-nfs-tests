@@ -2,7 +2,7 @@
 #
 #       @(#)tests.init	1.26 2003/12/30 Connectathon testsuite
 #
-MNTOPTIONS="rw,hard,intr"
+#MNTOPTIONS="rw,hard,intr"
 # Dummy MNTPOINT definition; should get overriden by server script.
 MNTPOINT="/mnt"
 
@@ -13,8 +13,8 @@ MNTPOINT="/mnt"
 # Use this mount command if using:
 #	SVR4
 #	Solaris 2.x
-MOUNTCMD='./domount -F nfs -o $MNTOPTIONS $SERVER\:$SERVPATH $MNTPOINT'
-CFSMOUNTCMD='./domount -F cachefs -o $MNTOPTIONS $SERVER\:$SERVPATH $MNTPOINT'
+#MOUNTCMD='./domount -F nfs -o $MNTOPTIONS $SERVER\:$SERVPATH $MNTPOINT'
+#CFSMOUNTCMD='./domount -F cachefs -o $MNTOPTIONS $SERVER\:$SERVPATH $MNTPOINT'
 
 # Use this mount command if using:
 #	BSD
@@ -26,8 +26,8 @@ CFSMOUNTCMD='./domount -F cachefs -o $MNTOPTIONS $SERVER\:$SERVPATH $MNTPOINT'
 #	Mac OS X
 # At least some BSD systems don't recognize "hard" (since that's the
 # default), so you might also want to use this definition of MNTOPTIONS.
-#MNTOPTIONS="rw,intr"
-#MOUNTCMD='./domount -o $MNTOPTIONS $SERVER\:$SERVPATH $MNTPOINT'
+MNTOPTIONS="rw,intr"
+MOUNTCMD='./domount -o $MNTOPTIONS $SERVER\:$SERVPATH $MNTPOINT'
 
 # Use this mount command if using:
 #	DG/UX
@@ -54,7 +54,7 @@ BLC=\\c
 
 # Use this path for:
 #	Solaris 2.x
-PATH=/opt/SUNWspro/bin:/usr/ccs/bin:/sbin:/bin:/usr/bin:/etc:.
+#PATH=/opt/SUNWspro/bin:/usr/ccs/bin:/sbin:/bin:/usr/bin:/etc:.
 
 # Use this path for:
 #	Solaris 2.x with GCC
@@ -91,7 +91,7 @@ PATH=/opt/SUNWspro/bin:/usr/ccs/bin:/sbin:/bin:/usr/bin:/etc:.
 
 # Use this path for:
 #	Mac OS X
-#PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin:.
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin:.
 
 SERVER=""
 SERVPATH="/server"
@@ -130,12 +130,12 @@ LOCKTESTS=tlock
 
 # Use with Solaris 2.x systems.  Need the 5.0 C compiler (or later)
 # for 64-bit mode.
-CC=/opt/SUNWspro/bin/cc
+#CC=/opt/SUNWspro/bin/cc
 # Use this with GCC
 #CC=/opt/gnu/bin/gcc
 # Use this through Solaris 2.6.  For Solaris 2.7 and later, use
 # this for 32-bit mode applications.
-CFLAGS=`echo -errwarn -DSVR4 -DMMAP -DSOLARIS2X -DSTDARG`
+#CFLAGS=`echo -errwarn -DSVR4 -DMMAP -DSOLARIS2X -DSTDARG`
 # Use this with gcc (32-bit binaries):
 #CFLAGS=`echo -DSVR4 -DMMAP -DSOLARIS2X -DSTDARG -mcpu=ultrasparc`
 # For Solaris 2.7 and later, use this for 64-bit mode applications
@@ -143,11 +143,11 @@ CFLAGS=`echo -errwarn -DSVR4 -DMMAP -DSOLARIS2X -DSTDARG`
 #CFLAGS=`echo -DSVR4 -DMMAP -DSOLARIS2X -DSTDARG -xO0 -xarch=v9 -dalign -Xt -L/usr/lib/sparcv9`
 # Use this to make 64-bit binaries with gcc (3.1 or later; untested): 
 #CFLAGS=`echo -DSVR4 -DMMAP -DSOLARIS2X -DSTDARG -m64`
-LIBS=`echo -lsocket -lnsl`
+#LIBS=`echo -lsocket -lnsl`
 # Use this through Solaris 2.5.1.
 #LOCKTESTS=`echo tlock`
 # Use with 2.6 and later systems, 32-bit mode.
-LOCKTESTS=`echo tlocklfs tlock64`
+#LOCKTESTS=`echo tlocklfs tlock64`
 # Use with 2.7 and later, 64-bit mode.
 #LOCKTESTS=`echo tlocklfs`
 
@@ -211,12 +211,12 @@ LOCKTESTS=`echo tlocklfs tlock64`
 #LOCKTESTS=`echo tlocklfs tlock64`
 
 # Use with Linux if your distro doesn't provide a "cc".
-#CC=gcc
+CC=gcc
 
 # Use with Mac OS X
-#CFLAGS=`echo -DMACOSX -DNATIVE64 -DLARGE_LOCKS`
-#MOUNT=/sbin/mount
-#UMOUNT=/sbin/umount
-#LOCKTESTS=`echo tlock`
+CFLAGS=`echo -DMACOSX -DNATIVE64 -DLARGE_LOCKS -DSTDARG`
+MOUNT=/sbin/mount
+UMOUNT=/sbin/umount
+LOCKTESTS=`echo tlock`
 
 # -----------------------------------------------
