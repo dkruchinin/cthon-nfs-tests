@@ -76,13 +76,13 @@ main(int argc, char *argv[])
 #ifndef WIN32
 	/* For WIN you can not delete the file if it is open */
 	printf("nfsjunk files before unlink:\n  ");
-	system("ls -al .nfs*");
+	system("ls -al ./nfs*");
 	ret = unlink(tname);
 	printf("%s open; unlink ret = %d\n", tname, ret);
 	if (ret)
 		xxit(" unlink");
 	printf("nfsjunk files after unlink:\n  ");
-	system("ls -al .nfs*");
+	system("ls -al ./nfs*");
 #endif
 	strcpy(wbuf, TMSG);
 	if ((ret = write(fd, wbuf, TBUFSIZ)) != TBUFSIZ) {
@@ -135,7 +135,7 @@ main(int argc, char *argv[])
 
 #ifndef WIN32
 	printf("nfsjunk files after close:\n  ");
-	system("ls -al .nfs*");
+	system("ls -al ./nfs*");
 #endif
 
 	if ((ret = close(fd)) == 0) {

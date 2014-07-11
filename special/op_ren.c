@@ -118,13 +118,13 @@ main(int argc, char *argv[])
 #endif /* O_RDWR */
 
 	printf("nfsjunk files before rename:\n  ");
-	system("ls -al .nfs*");
+	system("ls -al ./nfs*");
 	ret = rename(taname, tbname);
 	printf("%s open; rename ret = %d\n", tbname, ret);
 	if (ret)
 		xxit(" unlink");
 	printf("nfsjunk files after rename:\n  ");
-	system("ls -al .nfs*");
+	system("ls -al ./nfs*");
 	strcpy(wbuf, TMSG);
 	if ((ret = write(fd, wbuf, TBUFSIZ)) != TBUFSIZ) {
 		fprintf(stderr, "write ret %d; expected %d\n", ret, TBUFSIZ);
@@ -163,7 +163,7 @@ main(int argc, char *argv[])
 	}
 
 	printf("nfsjunk files after close:\n  ");
-	system("ls -al .nfs*");
+	system("ls -al ./nfs*");
 
 	if ((ret = close(fd)) == 0) {
 		errcount++;
